@@ -5,11 +5,11 @@ let Size = 0.001
 
 function increaseSize() {
     let elem = document.getElementById('text')
-    let text = new Blotter.Text('CREATIVE', {
+    let text = new Blotter.Text('DEVELOPER', {
 
         family: "'Roboto', sans-serif",
-        weight: 200,
-        size: 220,
+        weight: 400,
+        size: 200,
         fill: "red"
     })
 
@@ -32,28 +32,43 @@ increaseSize()
 
 //*LIQUID
 
-container = document.getElementById('text-2')
+const container = document.getElementById('text-2');
+let blotter = createBlotter();
 
-const textDos = new Blotter.Text("Believe in yourself", {
+function createBlotter(text) {
+    const material = new Blotter.LiquidDistortMaterial();
 
-    family: "serif",
-    size: 150,
-    fill: "#fff"
-})
+    material.uniforms.uSpeed.value = 0.3;
+    material.uniforms.uVolatility.value = 0.1;
+    material.uniforms.uSpeed.value = 0.1;
 
-let material = new Blotter.LiquidDistortMaterial()
+    return new Blotter(material, {
+        texts: text
+    });
+}
 
-material.uniforms.uSpeed.value = 0.3
-material.uniforms.uVolatility.value = 0.1
-material.uniforms.uSpeed.value = 0.1
+function updateBlotter() {
+    const newText = new Blotter.Text("CREATIVITY", {
+        family: "serif",
+        size: window.innerWidth * 0.1,
+        fill: "#fff"
+    });
 
-let blotter = new Blotter(material, {
-    texts: textDos
-})
+    blotter = createBlotter(newText);
 
-let scope = blotter.forText(textDos)
+    // Limpiar el contenido actual del contenedor antes de agregar el nuevo texto
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
 
-scope.appendTo(container)
+    blotter.forText(newText).appendTo(container);
+}
+
+// Se añade un listener de redimensionamiento para ajustar el tamaño del texto cuando cambie el tamaño de la ventana
+window.addEventListener('resize', updateBlotter);
+
+// Llamada a updateBlotter inicialmente para configurar el texto
+updateBlotter();
 
 //* PARTICLE
 
@@ -124,4 +139,44 @@ function moveIt(event) {
     material4.uniforms.uOffset.value = (event.clientX * .0001)
 }
 
+//* SLIDING
 
+let innerText = document.getElementById('text-5')
+let innerText2 = document.getElementById('text-5b')
+
+let textCinco = new Blotter.Text("SCRIPTS24", {
+
+    family: "'Cinzel', serif",
+    weight: 500,
+    size: 180,
+    fill: "#e6f701",
+})
+
+let textCincoB = new Blotter.Text("GITHUB", {
+
+    family: "'Cinzel', serif",
+    size: 120,
+    weight: 500,
+    fill: "#fff",
+})
+
+let material5 = new Blotter.SlidingDoorMaterial()
+let material5b = new Blotter.SlidingDoorMaterial()
+
+material5b.uniforms.uAnimateHorizontal.value = 1
+
+let blotter5 = new Blotter(material5, {
+    texts: textCinco
+
+})
+
+let blotter5b = new Blotter(material5b, {
+    texts: textCincoB
+
+})
+
+let scope5 = blotter5.forText(textCinco)
+let scope5b = blotter5b.forText(textCincoB)
+
+scope5.appendTo(innerText)
+scope5b.appendTo(innerText2)
