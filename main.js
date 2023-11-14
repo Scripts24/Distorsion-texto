@@ -32,9 +32,9 @@ increaseSize()
 
 //*LIQUID
 
-container = document.getElementById('main')
+container = document.getElementById('text-2')
 
-const text = new Blotter.Text("Believe in yourself", {
+const textDos = new Blotter.Text("Believe in yourself", {
 
     family: "serif",
     size: 150,
@@ -48,9 +48,42 @@ material.uniforms.uVolatility.value = 0.1
 material.uniforms.uSpeed.value = 0.1
 
 let blotter = new Blotter(material, {
-    texts: text
+    texts: textDos
 })
 
-let scope = blotter.forText(text)
+let scope = blotter.forText(textDos)
 
 scope.appendTo(container)
+
+//* PARTICLE
+
+contain = document.getElementById('text-3')
+
+let textTres = new Blotter.Text("Inspiration", {
+
+    family: "serif",
+    size: 220,
+    fill: "#fff",
+    paddingLeft: 80,
+    paddingRight: 80,
+    paddingTop: 80,
+    paddingBottom: 80
+})
+
+let material3 = new Blotter.FliesMaterial()
+
+material3.uniforms.uPointCellWidth.value = 0.01
+material3.uniforms.uPointRadius.value = 0.6
+material3.uniforms.uSpeed.value = 3
+
+let blotter3 = new Blotter(material3, {
+    texts: textTres
+})
+
+let scope3 = blotter3.forText(textTres)
+
+scope3.appendTo(contain)
+
+
+
+
