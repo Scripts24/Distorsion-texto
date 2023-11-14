@@ -1,27 +1,24 @@
-
-*{
-    padding: 0;
-    margin: 0;
+* {
+    padding   : 0;
+    margin    : 0;
     box-sizing: border-box;
 }
 
 /**ROLLING**/
 
-.rolling{
-    width: 100%;
-    height: 100vh;
-    background: #000 url('./img/bg.png') no-repeat center center/cover;
-    display: flex;
+.rolling {
+    width          : 100%;
+    height         : 100vh;
+    background     : #000 url('./img/bg.png') no-repeat center center/cover;
+    display        : flex;
     justify-content: center;
-    align-items: center;
-    font-family: 'Roboto', sans-serif;
+    align-items    : center;
+    font-family    : 'Roboto', sans-serif;
 }
 
 /**LIQUID**/
 
-.liquid{
-    margin    : 0%;
-    padding   : 0%;
+.liquid {
     width     : 100%;
     height    : 100vh;
     background: #1d1c1c;
@@ -34,13 +31,27 @@
 
 /**PARTICLE**/
 
-.particle{
-    width: 100%;
-    height: 100vh;
+.particle {
+    width     : 100%;
+    height    : 100vh;
     background: #000;
 }
 
-#text-3{
+#text-3 {
     padding-top: 100px;
-    text-align: center;
+    text-align : center;
+}
+
+/**SPLIT**/
+
+.split {
+    width     : 100%;
+    height    : 100vh;
+    background: #1d1c1c;
+    cursor    : pointer;
+}
+
+#text-4 {
+    padding-top: 100px;
+    text-align : center;
 }

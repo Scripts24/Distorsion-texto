@@ -3,7 +3,7 @@
 //* ROLLING
 let Size = 0.001
 
-function increaseSize(){
+function increaseSize() {
     let elem = document.getElementById('text')
     let text = new Blotter.Text('CREATIVE', {
 
@@ -17,7 +17,7 @@ function increaseSize(){
 
     material.uniforms.uSineDistortAmplitude.value = 0.04
 
-    let blotter = new Blotter(material,{
+    let blotter = new Blotter(material, {
         texts: text
     })
 
@@ -84,6 +84,44 @@ let scope3 = blotter3.forText(textTres)
 
 scope3.appendTo(contain)
 
+//* SPLIT
 
+wrapper = document.getElementById('text-4')
+
+let textCuatro = new Blotter.Text("Innovation", {
+
+    family: "serif",
+    size: 220,
+    fill: "#000",
+    paddingLeft: 80,
+    paddingRight: 80,
+    paddingTop: 80,
+    paddingBottom: 80
+})
+
+let material4 = new Blotter.ChannelSplitMaterial()
+
+material4.uniforms.uOffset.value = 0.02
+material4.uniforms.uRotation.value = 30
+material4.uniforms.uApplyBlur.value = 1
+material4.uniforms.uAnimateNoise.value = 0.3
+
+let blotter4 = new Blotter(material4, {
+    texts: textCuatro
+
+})
+
+let scope4 = blotter4.forText(textCuatro)
+
+scope4.appendTo(wrapper)
+
+// Mousemove effect
+
+document.onmousemove = moveIt
+
+function moveIt(event) {
+    material4.uniforms.uRotation.value = (event.clientX * .1)
+    material4.uniforms.uOffset.value = (event.clientX * .0001)
+}
 
 
